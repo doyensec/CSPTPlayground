@@ -5,13 +5,15 @@
 
 # :rocket: Introduction
 
-Welcome to the **CSPT Playground**, an app that provides an opportunity to learn, find and exploit Client-Side Path Traversal.
+Welcome to the **CSPT Playground**, an app that provides the opportunity to learn, find and exploit Client-Side Path Traversal (CSPT).
 
-Client-Side Path Traversal (CSPT) is a vulnerability that allows an attacker to manipulate the file paths used by a client-side application. This can lead to various vulnerabilities: including Cross-Site Scripting, leaks of sensitive data and Cross-Site Request Forgery ...
+Client-Side Path Traversal (CSPT) is a vulnerability that allows an attacker to manipulate the file paths used by a client-side application. This can lead to various vulnerabilities: including Cross-Site Scripting, leaks of sensitive data and Cross-Site Request Forgery and many others.
 
 This app is a playground specifically designed to demonstrate and exploit Client-Side Path Traversal vulnerabilities. It provides a platform to experiment with multiple exploits, such as CSPT2CSRF (Client-Side Path Traversal to Cross-Site Request Forgery) and CSPT2XSS (Client-Side Path Traversal to Cross-Site Scripting).
 
-Various gadgets and sinks have been implemented within this app to showcase the potential risks and consequences of CSPT. Other sources, such as store CSPT or other impacts have not been covered yet such as prototype pollution, DOM globerring, etc...
+Various gadgets and sinks have been implemented within this app to showcase the potential risks and consequences of CSPT. Other sources, such as store CSPT or other impacts have not been covered yet such as prototype pollution, DOM clobbering, etc...
+
+If you're still new to CSPT, make sure to read our [blog post](https://blog.doyensec.com/2024/07/02/cspt2csrf.html) and [whitepaper](https://www.doyensec.com/resources/Doyensec_CSPT2CSRF_Whitepaper.pdf).
 
 I hope you will like it, happy exploitation!
 
@@ -48,6 +50,6 @@ Current:
 
 This project was made with the support of [Doyensec](https://doyensec.com/research.html).
 
-![Doyensec Research](docs/doyensec_logo.svg)   
+![Doyensec Research](https://github.com/doyensec/inql/blob/master/docs/doyensec_logo.svg)   
 
 
