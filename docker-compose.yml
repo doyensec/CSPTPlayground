@@ -1,0 +1,23 @@
+services:
+  mongodb:
+    image: mongodb/mongodb-community-server
+
+  backend:
+    build: ./backend
+    container_name: backend
+    ports:
+      - "8000:8000" 
+    depends_on:
+      - mongodb
+    links:
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb://mongodb:27017/csptplayground_db
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
