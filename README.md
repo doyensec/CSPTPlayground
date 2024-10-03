@@ -20,7 +20,7 @@ I hope you will like it, happy exploitation!
 # :mag_right:  How to use it
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 The React application is accessible at http://localhost:3000 and the Express API at http://localhost:8000 
