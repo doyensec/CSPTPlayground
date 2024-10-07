@@ -19,6 +19,8 @@ I hope you will like it, happy exploitation!
 
 # :mag_right:  How to use it
 
+We package the backend, the frontend and the database with docker. If you have docker installed, you can run it with :
+
 ```bash
 docker compose up
 ```
@@ -27,7 +29,7 @@ The React application is accessible at http://localhost:3000 and the Express API
   
 # :scroll: Developing
 
-You can run the services without docker.
+You can run the services without docker. Development was made with node v20.9.0.
 
 ```bash
 docker run --name mongodb -d -p 27017:27017 mongodb/mongodb-community-server
