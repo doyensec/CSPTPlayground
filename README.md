@@ -26,7 +26,13 @@ docker compose up
 ```
 
 The React application is accessible at http://localhost:3000 and the Express API at http://localhost:8000 
-  
+
+You can change the backend host and port with the docker args REACT_APP_BACKEND_HOST and REACT_APP_BACKEND_PORT.
+
+```bash
+docker-compose build --build-arg REACT_APP_BACKEND_HOST=<hostname>
+docker compose up
+``` 
 # :scroll: Developing
 
 You can run the services without docker. Development was made with node v20.9.0.

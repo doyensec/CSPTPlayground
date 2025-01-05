@@ -7,6 +7,12 @@ WORKDIR /app
 # Copy package.json and package-lock.json
 COPY /app/ ./
 
+ARG REACT_APP_BACKEND_HOST=localhost
+ENV REACT_APP_BACKEND_HOST $REACT_APP_BACKEND_HOST
+
+ARG REACT_APP_BACKEND_PORT=8000
+ENV REACT_APP_BACKEND_PORT $REACT_APP_BACKEND_PORT
+
 # Install dependencies
 RUN npm install
 
