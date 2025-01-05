@@ -1,4 +1,5 @@
 import config from './config';
+import { toast } from 'react-toastify';
 
 export const client = {
   // Function to get the token
@@ -12,6 +13,16 @@ export const client = {
       'x-access-token': `${client.getToken()
         }`,
       ...options.headers,
+    }
+
+    // If the path of the URL starts with /CSPT, we will trigger a toast message
+    let method = options.method ? options.method : "GET";
+    if (URL.parse(url).pathname === `/CSPT`) {
+      if (method === "GET") {
+        toast.info(`You hit the /CSPT endpoint with the ${method} method. Can you escalate the impact?`);
+      } else {
+        toast.info(`You hit /CSPT endpoint with the ${method} method. Can you find exploitable sinks with this method ?`);
+      }
     }
 
     return fetch(url, { ...options, headers })
@@ -72,9 +83,22 @@ export const client = {
     return client.fetchWithAuth(`${config.apiBaseUrl}/api/gadget/files/${id} `);
   },
 
+  // Upload file
+  uploadFile: (url, formdata) => {
+    return client.fetchWithAuth(`${config.apiBaseUrl}${url}`, {
+      method: 'POST',
+      body: formdata,
+    });
+  },
+
   // Get a file by ID
   fetchRawFileById: (id) => {
-    return client.fetchWithAuth(`${config.apiBaseUrl}/api/gadget/files/${id}/raw`);
+    return fetch(`${config.apiBaseUrl}/api/gadget/files/${id}/raw`, {
+      headers: {
+        'x-access-token': `${client.getToken()}`
+      },
+      responseType: 'blob'
+    });
   },
 
   // Update a file by ID

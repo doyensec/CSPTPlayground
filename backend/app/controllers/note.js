@@ -26,7 +26,7 @@ class NoteController {
       const data = await note.save();
       res.status(201).json(data);
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 
@@ -37,7 +37,7 @@ class NoteController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 
@@ -48,7 +48,7 @@ class NoteController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 
@@ -62,7 +62,7 @@ class NoteController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 
@@ -88,7 +88,7 @@ class NoteController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 
@@ -102,7 +102,7 @@ class NoteController {
       res.status(200).json(data);
     } catch (error) {
       console.log(error);
-      res.status(500).send(error);
+      res.status(500).json(error);
     }
   }
 

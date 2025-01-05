@@ -18,15 +18,15 @@ class SinkController {
         try {
             const user = await User.findById(req.params.id);
             if (!user) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
 
             user['role'] = 'admin';
 
             await user.save();
-            res.send(user);
+            res.json(user);
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).json(error);
         }
     }
 
@@ -45,15 +45,15 @@ class SinkController {
             let id = req.query.id ? req.query.id : req.body.id;
             const user = await User.findById(id);
             if (!user) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
 
             user['role'] = 'admin';
 
             await user.save();
-            res.send(user);
+            res.json(user);
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).json(error);
         }
     }
 
@@ -63,15 +63,15 @@ class SinkController {
 
             const user = await User.findById(req.params.id);
             if (!user) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
 
             user['role'] = 'member';
 
             await user.save();
-            res.send(user);
+            res.json(user);
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).json(error);
         }
     }
 

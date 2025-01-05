@@ -9,6 +9,9 @@ import Login from './components/Login';
 import Notes from './components/Notes';
 import Index from './components/Index';
 import Files from './components/Files';
+import FilesBypasses from './components/FilesBypasses';
+import JSONP from './components/JSONP';
+import OpenRedirect from './components/OpenRedirect';
 import Users from './components/Users';
 import VulnerableNotesPathParam from './components/VulnerableNotesPathParam';
 import VulnerableNotesQueryParam from './components/VulnerableNotesQueryParam';
@@ -33,6 +36,9 @@ const App = () => {
         <Route path="/users" element={<Users />} />
         <Route path="/notes" element={<Notes user={user} setUser={setUser} />} />
         <Route path="/gadget/files" element={<Files />} />
+        <Route path="/gadget/files/bypasses" element={<FilesBypasses />} />
+        <Route path="/gadget/JSONP" element={<JSONP />} />
+        <Route path="/gadget/OpenRedirect" element={<OpenRedirect />} />
         <Route path="/vulnerable/note_path_param/:id/details" element={<VulnerableNotesPathParam />} />
         <Route path="/vulnerable/note_query_param" element={<VulnerableNotesQueryParam />} />
         <Route path="/vulnerable/note_fragment_param" element={<VulnerableNotesFragmentParam />} />

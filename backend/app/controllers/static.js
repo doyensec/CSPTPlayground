@@ -9,7 +9,7 @@ class StaticController {
     document.getElementById('title').innerText = title;\
      document.getElementById('description').innerText = message;";
         res.setHeader('Content-type', "application/javascript");
-        res.status(200).send(script);
+        res.status(200).json(script);
     };
 
     static async translation_fr(req, res) {
@@ -18,7 +18,7 @@ class StaticController {
      document.getElementById('title').innerText = title;\
      document.getElementById('description').innerText = message;";
         res.setHeader('Content-type', "application/javascript");
-        res.status(200).send(script);
+        res.status(200).json(script);
     }
 }
 

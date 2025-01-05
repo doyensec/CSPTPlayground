@@ -41,12 +41,21 @@ const Files = () => {
       });
   };
 
-  // Get a file by ID
-  const handleGetRawFile = (id) => {
+  // Download file
+  const handleFetchRawFile = (id) => {
     client.fetchRawFileById(id)
-      .then(data => setFile(data))
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `${id}.bin`);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+      })
       .catch(error => {
-        toast.error(`${error}`);
+        toast.error(`Failed to fetch file: ${error}`);
       });
   };
 
@@ -81,6 +90,15 @@ const Files = () => {
       <h1 className="text-center mb-4">Files</h1>
       <Card className="mb-4">
         <Card.Body>
+          <Card.Text>
+            If the application exposes a file upload feature in the API, attackers can abuse it to leverage a CSPT with a GET sink. Indeed, an attacker can upload a JSON with malicious content, which will then be parsed by the front end and can lead to different client-side vulnerabilities: XSS, CSRF, Dom Clobbering...
+            <br />
+            Note that any other endpoints accessible by the victim and that return attacker control data can be used similarly.
+          </Card.Text>
+        </Card.Body>
+      </Card>
+      <Card className="mb-4">
+        <Card.Body>
           <Card.Title>Create File</Card.Title>
 
           <Form className="mb-4">
@@ -105,6 +123,7 @@ const Files = () => {
                 <span>{file._id}</span>
                 <div>
                   <Button variant="primary" size="sm" className="me-2" onClick={() => handleGetFile(file._id)}>View</Button>
+                  <Button variant="secondary" size="sm" className="me-2" onClick={() => handleFetchRawFile(file._id)}>Download</Button>
                   <Button variant="danger" size="sm" onClick={() => handleDeleteFile(file._id)}>Delete</Button>
                 </div>
               </ListGroup.Item>

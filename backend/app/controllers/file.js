@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Joi = require('joi');
-
 var Files = require('../models/file');
 
 const fileSchema = Joi.object({
@@ -22,9 +21,9 @@ class FileController {
 
             const file = new Files(req.body);
             await file.save();
-            res.status(201).send(file);
+            res.status(201).json(file);
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).json(error);
         }
     }
 
@@ -33,13 +32,14 @@ class FileController {
         try {
             const file = await Files.findById(req.params.id);
             if (!file) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
+            
             res.setHeader('Content-disposition', 'attachment; filename=' + file._id);
-            res.setHeader('Content-type', "text/plain");
+            res.type("text/plain");
             res.send(file.content);
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     }
 
@@ -47,11 +47,11 @@ class FileController {
         try {
             const file = await Files.findById(req.params.id);
             if (!file) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
-            res.send(file);
+            res.json(file);
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     }
 
@@ -69,20 +69,20 @@ class FileController {
         const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
         if (!isValidOperation) {
-            return res.status(400).send({ error: 'Invalid updates!' });
+            return res.status(400).json({ error: 'Invalid updates!' });
         }
 
         try {
             const file = await Files.findById(req.params.id);
             if (!file) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
 
             updates.forEach((update) => (file[update] = req.body[update]));
             await file.save();
-            res.send(file);
+            res.json(file);
         } catch (error) {
-            res.status(400).send(error);
+            res.status(400).json(error);
         }
     }
 
@@ -90,19 +90,19 @@ class FileController {
         try {
             const file = await Files.findByIdAndDelete(req.params.id);
             if (!file) {
-                return res.status(404).send();
+                return res.status(404).json();
             }
-            res.send(file);
+            res.json(file);
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     }
     static async getAllFiles(req, res) {
         try {
             const files = await Files.find();
-            res.send(files);
+            res.json(files);
         } catch (error) {
-            res.status(500).send(error);
+            res.status(500).json(error);
         }
     }
 }
