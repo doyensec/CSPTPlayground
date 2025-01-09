@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Maxence Schmitt",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -14,11 +14,16 @@
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "express": "^4.19.2",
+    "express-fileupload": "^1.5.1",
     "express-mongo-sanitize": "^2.2.0",
+    "file-type": "^19.6.0",
     "joi": "^17.13.3",
     "jquery": "^3.7.1",
     "jsonwebtoken": "^9.0.2",
+    "mmmagic": "github:picturae/mmmagic#node-20",
     "mongoose": "^8.4.4",
-    "popper.js": "^1.16.1"
+    "pdf-lib": "^1.17.1",
+    "popper.js": "^1.16.1",
+    "tmp": "^0.2.3"
   }
 }

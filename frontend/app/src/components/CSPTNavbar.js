@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import { Navbar, Nav, NavDropdown, Button, Container } from 'react-bootstrap';
 
 import { client } from '../client';
-import config from '../config';
 
 const CSPTNavbar = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -65,8 +64,9 @@ const CSPTNavbar = ({ user, setUser }) => {
                 </NavDropdown>
                 <NavDropdown title="Gadget" id="gadget-dropdown">
                   <NavDropdown.Item href="/gadget/files">Files</NavDropdown.Item>
-                  <NavDropdown.Item href={`${config.apiBaseUrl}/api/gadget/open_redirect?url=`}>Open redirect</NavDropdown.Item>
-                  <NavDropdown.Item href={`${config.apiBaseUrl}/api/gadget/jsonp?callback=`}>JSONP callback</NavDropdown.Item>
+                  <NavDropdown.Item href="/gadget/files/bypasses">Files Upload Bypasses</NavDropdown.Item>
+                  <NavDropdown.Item href="/gadget/OpenRedirect">Open redirect</NavDropdown.Item>
+                  <NavDropdown.Item href="/gadget/JSONP">JSONP callback</NavDropdown.Item>
                 </NavDropdown>
               </>
             )}

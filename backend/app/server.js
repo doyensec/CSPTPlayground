@@ -1,15 +1,18 @@
 const express = require("express");
+const fileUpload = require('express-fileupload');
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const mongoSanitize = require('express-mongo-sanitize');
 const mongoose = require('mongoose');
 
-const initDatabase = require('./utils');
+const { initDatabase } = require('./utils');
 
 const auth = require('./middleware/auth');
 const error = require('./middleware/error');
 
 const fileCtrl = require('./controllers/file');
+const filePDFCtrl = require('./controllers/filepdf');
+const fileImageCtrl = require('./controllers/fileimage');
 const userCtrl = require('./controllers/user');
 const noteCtrl = require('./controllers/note');
 const gadgetCtrl = require('./controllers/gadget');
@@ -41,6 +44,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 
+app.use(fileUpload());
+
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Damn Vulnerable CSPT application." });
 });
@@ -57,6 +62,8 @@ app.use('/api/v1', noteCtrl);
 app.use('/api/v1', userCtrl);
 app.use('/api/gadget', gadgetCtrl);
 app.use('/api/gadget', fileCtrl);
+app.use('/api/gadget', filePDFCtrl);
+app.use('/api/gadget', fileImageCtrl);
 app.use('/api/', staticCtrl);
 app.use('/api/', sinkCtrl);
 

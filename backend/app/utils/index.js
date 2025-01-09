@@ -28,7 +28,6 @@ const initDatabase = () => {
       new Files({ _id: '66fc8d0755cf0d5f4cf25ba1', content: '{"_id":"../../../../api/sink/demote/66fc8c17d29c4a98a44a4a86","title":"I\'m a File not a Note","description":"We will use this gadget to target demote the admin"}' }).save();
       new Files({ _id: '66fc8d071bcf0db1bcfab67c', content: '{"_id":"CSPT2XSS","title":"<img src=x onerror=\\"alert(localStorage.getItem(\'token\'))\\" />","description":"<img src=x onerror=\\"alert(localStorage.getItem(\'token\'))\\" />"}' }).save();
 
-
       console.log('Files created');
     });
   } catch (error) {
@@ -36,6 +35,5 @@ const initDatabase = () => {
   }
 }
 
-
-module.exports = initDatabase
+module.exports = { initDatabase }
 

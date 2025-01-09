@@ -13,14 +13,14 @@ verifyToken = (req, res, next) => {
   //Token verification
   let token = req.headers["x-access-token"];
   if (!token) {
-    return res.status(403).send({ message: "No token provided!" });
+    return res.status(403).json({ message: "No token provided!" });
   }
 
   jwt.verify(token,
     config.jwtSecret,
     (err, decoded) => {
       if (err) {
-        return res.status(401).send({
+        return res.status(401).json({
           message: "Unauthorized!",
         });
       }
@@ -36,7 +36,7 @@ isAdmin = (req, res, next) => {
     next();
     return;
   } else {
-    res.status(403).send({ message: "Require Admin Role!" });
+    res.status(403).json({ message: "Require Admin Role!" });
     return;
   }
 };

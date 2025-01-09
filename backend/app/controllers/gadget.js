@@ -33,7 +33,7 @@ class GadgetController {
     const data = { message: 'Hello, world!' };
     const jsonpResponse = `${callback}(${JSON.stringify(data)})`;
     res.setHeader('Content-type', "text/plain");
-    res.send(jsonpResponse);
+    res.json(jsonpResponse);
   }
 }
 
