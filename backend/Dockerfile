@@ -5,12 +5,12 @@ FROM node:20.9.0
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY /app/package*.json .
+COPY app/package*.json ./
 
 # Install dependencies
 RUN npm install
 
-COPY /app .
+COPY app/ .
 
 # Expose the port the app runs on
 EXPOSE 3000
